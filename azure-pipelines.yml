@@ -31,6 +31,5 @@ steps:
 - script: curl -v localhost:5000
   displayName: 'test app live'
 
-- script: curl localhost:5001
-  displayName: 'test another port'
+
   
