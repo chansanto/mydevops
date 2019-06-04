@@ -5,9 +5,9 @@
 variables:
 - group: testvariable
 - name: dockerId
-  value: mydevopstest 
+  value: 'mydevopstest'
 - name: imageName
-  value: imagenametest
+  value: 'imagenametest'
 
 trigger:
 - dev
