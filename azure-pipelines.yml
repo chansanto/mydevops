@@ -27,12 +27,12 @@ steps:
     delayForMinutes: '2' 
 
 - script: docker run -d -p 5000:5000 $(dockerId)/$(imageName):$(build.buildid)
-  displayname: 'run test app'
+  displayName: 'run test app'
 
 - task: Delay@1
   inputs:
     delayForMinutes: '2' 
     
 - script: curl localhost:5000
-  displayname: 'test app live'
+  displayName: 'test app live'
   
