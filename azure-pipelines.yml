@@ -4,9 +4,11 @@
 # https://aka.ms/yaml
 variables:
 - group: testvariable
+  dockerId: mydevopstest 
+  imageName: imagenametest
 
 trigger:
-- master
+- dev
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -14,8 +16,21 @@ pool:
 steps:
 - script: echo Hello, world! $(urlkien)
   displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    docker build -t $(dockerId)/$(imageName):$(build.buildid) .
+  displayName: 'build image'
+
+- task: Delay@1
+  inputs:
+    delayForMinutes: '2' 
+
+- script: docker run -d -p 5000:5000 $(dockerId)/$(imageName):$(build.buildid)
+  displayname: 'run test app'
+
+- task: Delay@1
+  inputs:
+    delayForMinutes: '2' 
+    
+- script: curl localhost:5000
+  displayname: 'test app live'
+  
