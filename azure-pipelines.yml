@@ -22,14 +22,15 @@ steps:
     docker build -t $(dockerId)/$(imageName):$(build.buildid) .
   displayName: 'build image'
 
-- script: sleep 5
-  displayName: 'wait app up'
-
 - script: docker run -d -p 5000:5000 $(dockerId)/$(imageName):$(build.buildid)
   displayName: 'run test app'
 
+- script: sleep 5
+  displayName: 'wait app up'
 
-    
-- script: curl localhost:5000
+- script: curl -v localhost:5000
   displayName: 'test app live'
+
+- script: curl localhost:5001
+  displayName: 'test another port'
   
