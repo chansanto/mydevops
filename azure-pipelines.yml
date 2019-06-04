@@ -4,8 +4,10 @@
 # https://aka.ms/yaml
 variables:
 - group: testvariable
-- dockerId: mydevopstest 
-- imageName: imagenametest
+- name: dockerId
+  value: mydevopstest 
+- name: imageName
+  value: imagenametest
 
 trigger:
 - dev
