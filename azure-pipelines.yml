@@ -21,9 +21,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- script: npm init
+  displayName: 'Run a one-line script'
+
 - script: npm install -D sonarqube-scanner
   displayName: 'Run a one-line script'
-  
+
+
 - script: ls -lah
   displayName: 'run wait'
 
