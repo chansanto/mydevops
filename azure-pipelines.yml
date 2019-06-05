@@ -22,9 +22,16 @@ pool:
 
 steps:
 - script: |
-     pip install coverage
-     coverage report -m
-  displayName: 'install coverage'
+    pip install pytest
+    pip install pytest-cov
+    pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+  displayName: 'Test with pytest'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: '**/test-*.xml'
+    testRunTitle: 'Publish test results for Python $(python.version)'
 
 - script: npm init -y
   displayName: 'Run a one-line script'
