@@ -21,6 +21,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: pip install coverage
+  displayName: 'install coverage'
 
 - script: npm init -y
   displayName: 'Run a one-line script'
