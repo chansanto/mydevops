@@ -8,15 +8,6 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
-    
-    
-  asldasl;dkas;ld
+    app.run(debug=True, host='0.0.0.0')
 
-asldjk;aslkd;askd
 hehee()
-
-sadl;askcmzx.,cnqwileulwqe
-sadl;kas;dk;lasdnasl,djzxlujcklqwe
-as,djl;asjc;zxlkcl;zxk;c;zx;lasda
-
