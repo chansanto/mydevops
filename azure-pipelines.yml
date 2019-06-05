@@ -21,10 +21,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: npm install -g sonarqube-scanner
+- script: npm install -D sonarqube-scanner
   displayName: 'Run a one-line script'
 
-- script: sonar-scanner -Dsonar.projectKey=testpython -Dsonar.sources=.  -Dsonar.host.url=http://13.67.39.98:9000  -Dsonar.login=bb5905c40b44eca1d95c96a09d03fbeb9bb8b558
+- script: ./node_modules/sonarqube-scanner/dist/bin/sonar-scanner -Dsonar.projectKey=testpython -Dsonar.sources=.  -Dsonar.host.url=http://13.67.39.98:9000  -Dsonar.login=bb5905c40b44eca1d95c96a09d03fbeb9bb8b558
   displayName: 'Run a one-line script'
 
 - task: SonarQubePostTest@1
