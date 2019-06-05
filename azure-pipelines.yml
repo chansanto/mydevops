@@ -21,14 +21,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-
-- task: SonarQubePreBuild@1
-  inputs:
-    projectKey: 'testpython'
-    projectName: 'testpython'
-    projectVersion: '1.0'
-    connectedServiceName: 'sonarqubetest'
-
+- script: sonar-scanner -Dsonar.projectKey=testpython -Dsonar.sources=.  -Dsonar.host.url=http://13.67.39.98:9000  -Dsonar.login=bb5905c40b44eca1d95c96a09d03fbeb9bb8b558
+  displayName: 'Run a one-line script'
 
 - task: SonarQubePostTest@1
 
