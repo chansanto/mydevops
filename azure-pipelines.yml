@@ -38,16 +38,13 @@ steps:
     docker build -t $(dockerId)/$(imageName):$(build.buildid) .
   displayName: 'build image'
 
-- task: Delay@1
-  inputs:
-    delayForMinutes: '2' 
+
 
 - script: docker run -d -p 5000:5000 $(dockerId)/$(imageName):$(build.buildid)
   displayName: 'run test app'
 
-- task: Delay@1
-  inputs:
-    delayForMinutes: '2' 
+- script: sleep 5
+  displayName: 'run wait'
     
 - script: curl localhost:5000
   displayName: 'test app live'
