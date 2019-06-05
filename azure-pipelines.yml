@@ -22,7 +22,7 @@ pool:
 
 steps:
 
-- script: npm init
+- script: npm init -y
   displayName: 'Run a one-line script'
 
 - script: npm install -D sonarqube-scanner
