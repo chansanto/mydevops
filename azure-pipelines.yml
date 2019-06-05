@@ -4,15 +4,7 @@
 # https://aka.ms/yaml
 
 # Starter pipeline
-- task: SonarQubePreBuild@1
-  inputs:
-    projectKey: 'testpython'
-    projectName: 'testpython'
-    projectVersion: '1.0'
-    connectedServiceName: 'sonarqubetest'
 
-
-- task: SonarQubePostTest@1
 
 
 variables:
@@ -27,6 +19,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: SonarQubePreBuild@1
+  inputs:
+    projectKey: 'testpython'
+    projectName: 'testpython'
+    projectVersion: '1.0'
+    connectedServiceName: 'sonarqubetest'
+
+
+- task: SonarQubePostTest@1
+
 - script: echo Hello, world! $(urlkien)
   displayName: 'Run a one-line script'
 - script: |
