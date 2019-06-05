@@ -19,6 +19,9 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  
+- script: npm install -g sonarqube-scanner
+  displayName: 'Run a one-line script'
 
 steps:
 - script: sonar-scanner -Dsonar.projectKey=testpython -Dsonar.sources=.  -Dsonar.host.url=http://13.67.39.98:9000  -Dsonar.login=bb5905c40b44eca1d95c96a09d03fbeb9bb8b558
