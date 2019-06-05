@@ -1,7 +1,12 @@
-# Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+
+# Starter pipeline
+
+
+
 variables:
 - group: testvariable
 - name: dockerId
@@ -16,20 +21,34 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: SonarQubePreBuild@1
+  inputs:
+    projectKey: 'testpython'
+    projectName: 'testpython'
+    projectVersion: '1.0'
+    connectedServiceName: 'sonarqubetest'
+
+
+- task: SonarQubePostTest@1
+
 - script: echo Hello, world! $(urlkien)
   displayName: 'Run a one-line script'
 - script: |
     docker build -t $(dockerId)/$(imageName):$(build.buildid) .
   displayName: 'build image'
 
+- task: Delay@1
+  inputs:
+    delayForMinutes: '2' 
+
 - script: docker run -d -p 5000:5000 $(dockerId)/$(imageName):$(build.buildid)
   displayName: 'run test app'
 
-- script: sleep 5
-  displayName: 'wait app up'
-
-- script: curl -v localhost:5000
+- task: Delay@1
+  inputs:
+    delayForMinutes: '2' 
+    
+- script: curl localhost:5000
   displayName: 'test app live'
-
-
   
