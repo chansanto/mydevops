@@ -23,6 +23,9 @@ pool:
 steps:
 - script: pip install coverage
   displayName: 'install coverage'
+  
+- script: coverage report -m
+  displayName: 'report coverage'
 
 - script: npm init -y
   displayName: 'Run a one-line script'
